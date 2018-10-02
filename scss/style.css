@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300italic");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+* {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: default;
+}
+
+html {
+  font-size: 62.5%;
+  color: #2d3142;
+  background-color: #2d3142;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #110d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.fixed-sidebar {
+  min-width: 7em;
+}
+
+.container {
+  min-width: 100vh;
+  -webkit-padding-end: 0%;
+          padding-inline-end: 0%;
+  border: 1px solid;
+}
+
+.dashboard {
+  display: block;
+  min-width: 100vh;
+  padding-top: .2em;
+  padding-left: 2em;
+  padding-right: 2em;
+  -webkit-padding-after: 100%;
+          padding-block-end: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 8px 8px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+}
+
+.dashboard-title {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.dashboard-clock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dashboard-clock-digital {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.dashboard-clock-binary {
+  margin-left: 8px;
+  border-collapse: separate;
+}
+
+.dashboard-clock-binary td {
+  height: .4rem;
+  width: .4rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.dashboard-clock-binary .num1 {
+  background-color: #2eb35a;
+}
+
+.server {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 12px 0;
+  border: 1px solid rgba(45, 69, 66, 0.5);
+  white-space: nowrap;
+  background-color: rgba(191, 192, 192, 0.3);
+}
+
+.server:hover {
+  background-color: rgba(79, 93, 117, 0.2);
+  -webkit-animation: none;
+          animation: none;
+}
+
+.server-icon {
+  display: inline-block;
+  font-size: 3rem;
+  margin: 0 2rem;
+}
+
+.server-details {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.server-details li {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #7e8794;
+}
+
+.server-details li:last-child .data {
+  font-weight: normal;
+  color: rgba(45, 69, 66, 0.5);
+}
+
+.server-details .data {
+  display: block;
+  margin: -1.7rem 0 0 0;
+  padding: 0 1rem 0 0;
+  font-weight: 600;
+  text-align: right;
+  color: #c1c6cb;
+}
+
+.server-details .signal {
+  color: #2eb35a;
+}
+
+.server-details .signal::before {
+  content: '';
+  display: inline-block;
+  width: .6rem;
+  height: .6rem;
+  background-color: currentColor;
+  border-radius: 50%;
+  margin-right: .5rem;
+  margin-top: -.2rem;
+  vertical-align: middle;
+}
+
+.server-list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(25rem, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  grid-gap: 2rem;
+}
+
+.server.has-failed {
+  -webkit-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  border-color: #ef5254;
+  -webkit-animation: alertblink 2s ease-in-out infinite;
+          animation: alertblink 2s ease-in-out infinite;
+}
+
+.server.has-failed .server-icon,
+.server.has-failed .signal {
+  color: #ef5254;
+}
+
+.server.has-failed:hover {
+  background-color: rgba(239, 82, 84, 0.2);
+  -webkit-animation: none;
+          animation: none;
+}
+
+@-webkit-keyframes alertblink {
+  0% {
+    background: rgba(239, 82, 84, 0.1);
+  }
+  50% {
+    background: rgba(239, 82, 84, 0.2);
+  }
+  100% {
+    background: rgba(239, 82, 84, 0.1);
+  }
+}
+
+@keyframes alertblink {
+  0% {
+    background: rgba(239, 82, 84, 0.1);
+  }
+  50% {
+    background: rgba(239, 82, 84, 0.2);
+  }
+  100% {
+    background: rgba(239, 82, 84, 0.1);
+  }
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300italic");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+
+$cGood: #2eb35a;
+$cAlert: #ef5254;
+$blue: #4f5d75;
+
+* {  
+    user-select: none; 
+    cursor: default;
+}
+
+html{
+	font-size: 62.5%;
+	color: #2d3142;
+    background-color: #2d3142;
+}
+
+// body {
+//     // padding: 20px 50px;
+// }
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #110d0d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.flex {
+	display: flex;
+}
+
+.fixed-sidebar {
+    min-width: 7em;
+}
+
+.container {
+    // max-width: 400px;
+    min-width: 100vh;
+    padding-inline-end: 0%;
+	border: 1px solid;
+}
+
+.dashboard {
+    display:            block;
+    min-width: 100vh;
+    // max-width:          1024px;
+    padding-top:        .2em;
+    padding-left:       2em;
+    padding-right:      2em;
+    padding-block-end: 100%;
+    margin: 0 auto;
+    padding: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 8px 8px rgba(0,0,0,0.2);
+
+    &-header {
+        display:        flex;
+        align-items:    center;
+        font-family:    'Lato', sans-serif;
+        text-transform: uppercase;
+    }
+    
+    &-title {
+        flex: 1;
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    &-clock {
+        display: flex;
+        align-items: center;
+    
+        &-digital {
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+    
+        &-binary {
+            margin-left: 8px;
+            border-collapse:separate;
+            
+            td {
+                height: .4rem;
+                width: .4rem;
+                background-color: rgba(255, 255, 255, .2);
+                border-radius:50%;
+            }
+        
+            .num1 {
+                background-color: $cGood;
+            }
+        }
+    }
+}
+
+.server {
+    display: flex;
+    align-items: center;
+
+    padding:            12px 0;       
+    border:             1px solid rgba(45, 69, 66, .5);
+    // border-radius: 4px;
+    white-space:        nowrap;
+    background-color: rgba(191, 192, 192, .3);
+    
+    &:hover {
+        background-color: rgba($blue, .2);
+        animation: none;
+    }
+
+    &-icon {
+        display:    inline-block;
+        font-size:  3rem;
+        margin:     0 2rem;
+    }    
+
+    &-details {
+        flex:       1;
+        display:    block;
+        list-style: none;
+        margin:     0;
+        padding:    0;
+
+        li {
+            display:        block;
+            font-size:      1.2rem;
+            line-height:    1.5;
+            color:          #7e8794;
+
+            &:last-child {
+                .data {
+                    font-weight: normal;
+                    color: rgba(45, 69, 66, .5);
+                }
+            }
+        }
+        
+        .data {
+            display: block;
+            margin: -1.7rem 0 0 0;
+            padding: 0 1rem 0 0;
+            font-weight: 600;
+            text-align: right;
+            color: #c1c6cb;
+        }
+
+        .signal {
+            color: $cGood;
+
+            &::before {
+                content: '';
+                display:    inline-block;
+                width:      .6rem;
+                height:     .6rem;
+                background-color: currentColor;
+                border-radius: 50%;
+                margin-right: .5rem;
+                margin-top: -.2rem;
+                vertical-align: middle;
+            }
+        }
+    }
+    
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+        grid-gap: 2rem;
+    } 
+
+    &.has-failed {
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, .2);
+        border-color: $cAlert;
+        animation: alertblink 2s ease-in-out infinite;
+
+        .server-icon,
+        .signal {
+            color: $cAlert;
+        }
+
+        &:hover {
+            background-color: rgba($cAlert, .2);
+            animation: none;
+        }
+    }
+}
+
+@keyframes alertblink {
+    0% {
+        background: rgba($cAlert, 0.1);
+    }
+    50% {
+        background: rgba($cAlert, 0.2);
+    }
+    100% {
+        background: rgba($cAlert, 0.1);
+    }
+}
